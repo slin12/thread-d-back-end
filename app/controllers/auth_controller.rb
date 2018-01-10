@@ -9,6 +9,14 @@ class AuthController < ApplicationController
     }
   end
 
+  def new
+    if current_user
+      render json: current_user
+    else
+      render json: {errors: 'not authenticated'}
+    end
+  end
+
   def create
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
