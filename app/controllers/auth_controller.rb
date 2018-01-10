@@ -10,13 +10,13 @@ class AuthController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       payload = {user_id: @user.id}
       token = issue_token(payload)
-      render json: { id: @user.id, username: @user.username, jwt: token}
+      render json: { user: @user, token: token}
     else
-      render json: { error: "some bad stuff happened"}
+      render json: { error: "your credentials are wrong"}
     end
   end
 
