@@ -4,7 +4,6 @@ class AuthController < ApplicationController
   def show
     render json: {
       id: current_user.id,
-      username: current_user.username,
       name: current_user.name
     }
   end
@@ -22,7 +21,7 @@ class AuthController < ApplicationController
     if @user && @user.authenticate(params[:password])
       payload = {user_id: @user.id}
       token = issue_token(payload)
-      render json: { user: @user, token: token}
+      render json: { user: {name: @user.name, patterns: @user.patterns}, token: token}
     else
       render json: { error: "your credentials are wrong"}
     end

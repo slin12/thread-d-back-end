@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :index]
   def create
     user = User.create(user_params)
     if user.valid?
       payload = {user_id: user.id}
       token = issue_token(payload)
-      render json: {user: user, token: token}
+      render json: {user: {name: user.name, patterns: user.patterns}, token: token}
     else
       render json: {errors: user.errors.full_messages}
     end
   end
+
 
   private
   def user_params
