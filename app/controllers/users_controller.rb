@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       token = issue_token(payload)
       render json: {user: {name: user.name, patterns: user.patterns, colors: user.colors}, token: token}
     else
-      render json: {errors: user.errors.full_messages}
+      render json: {error: user.errors.full_messages}
     end
   end
 

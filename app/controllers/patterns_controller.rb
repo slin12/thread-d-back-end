@@ -4,7 +4,7 @@ class PatternsController < ApplicationController
     if pattern.valid?
       render json: {pattern: pattern, user_patterns: current_user.patterns}
     else
-      render json: {errors: 'error with saving'}
+      render json: {error: 'error with saving'}
     end
   end
 
