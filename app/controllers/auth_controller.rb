@@ -1,18 +1,18 @@
 class AuthController < ApplicationController
   skip_before_action :authorized
 
-  def show
-    render json: {
-      id: current_user.id,
-      name: current_user.name
-    }
-  end
+  # def show
+  #   render json: {
+  #     id: current_user.id,
+  #     name: current_user.name
+  #   }
+  # end
 
   def new
     if current_user
       render json: current_user
     else
-      render json: {errors: 'not authenticated'}
+      render json: {error: 'not authenticated'}
     end
   end
 
@@ -21,7 +21,7 @@ class AuthController < ApplicationController
     if @user && @user.authenticate(params[:password])
       payload = {user_id: @user.id}
       token = issue_token(payload)
-      render json: { user: {name: @user.name, patterns: @user.patterns}, token: token}
+      render json: { user: {name: @user.name, patterns: @user.patterns, colors: @user.colors}, token: token}
     else
       render json: { error: "your credentials are wrong"}
     end
