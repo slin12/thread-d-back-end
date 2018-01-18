@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/auth', to: 'auth#new'
 
   post '/patterns', to: 'patterns#create'
+  delete '/patterns', to: 'patterns#destroy'
 end

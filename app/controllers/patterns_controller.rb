@@ -8,4 +8,9 @@ class PatternsController < ApplicationController
     end
   end
 
+  def destroy
+    pattern = Pattern.find_by(url: params[:url])
+    pattern.destroy
+    render json: current_user
+  end
 end
