@@ -19,9 +19,14 @@ class UsersController < ApplicationController
   end
 
   def create_color
-    current_user.colors.push(params[:colors])
-    current_user.save
-    render json: current_user
+    prevColor = current_user.colors.find {|c| c.join("") == params[:colors].join("")}
+    if prevColor
+      render json: current_user
+    else
+      current_user.colors.push(params[:colors])
+      current_user.save
+      render json: current_user
+    end
   end
 
   private
