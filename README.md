@@ -1,24 +1,38 @@
-# README
+# thread'd
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository is the back-end companion to [this repository][1].
 
-Things you may want to cover:
+thread'd is an interactive experience to create 3d rendered custom clothing. 
 
-* Ruby version
+live demo: [thread'd][2]
 
-* System dependencies
+### Features: 
 
-* Configuration
+- landing page & interactive experiences built in p5.js 
+- interactions using mouse movement, scrolling, and sound input
+- custom male and female blender models exported for three.js
+- orbit controls for zooming and moving around model 
+- customizable colors & default colors schemes
+- sharable unique links & integration to post to twitter, reddit, linkedin, and email
 
-* Database creation
+### Front End built with: 
+ 
+- ReactJS
+- React Router
+- Redux
+- react-share
+- react-color
+- three.js & react-three-renderer 
+- p5.js, including p5.dom & p5.sound
+- AWS S3 & react-s3 
+- Firebase
 
-* Database initialization
+### Back End built with: 
 
-* How to run the test suite
+- Ruby on Rails 
+- bcrypt & jwt tokens 
+- Postgres 
+- Heroku
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[1]:https://github.com/slin12/thread-d-front-end
+[2]:https://threadd-adc5f.firebaseapp.com/welcome
