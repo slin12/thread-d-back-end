@@ -23,7 +23,7 @@ class AuthController < ApplicationController
       token = issue_token(payload)
       render json: { user: {name: @user.name, patterns: @user.patterns, colors: @user.colors}, token: token}
     else
-      render json: { error: "Your email and password do not match our records. Please try again."}
+      render json: { error: ["Your email and password do not match our records. Please try again."]}
     end
   end
 
